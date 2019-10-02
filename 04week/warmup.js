@@ -6,5 +6,5 @@ let jack = [{
     age: 30,
 }]
 
-jack.map(added => added.age += 10);
+jack.map(added => added.age -= 10);
 console.log(jack);
