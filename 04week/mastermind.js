@@ -28,12 +28,18 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess) {
   // your code here
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  solution = 'abcd'; 
+  board.push(guess);
+  if(guess === solution){
+    return 'WHOA! You guessed it'
+  }
+  var hint = generateHint(guess)
+  console.log(hint)// Comment this out to generate a random solution
   // your code here
 }
 
