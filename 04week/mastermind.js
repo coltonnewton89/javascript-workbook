@@ -33,9 +33,9 @@ function generateHint(guess) {
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; 
+  solution = 'abcd';
   board.push(guess);
-  if(guess === solution){
+  if (guess === solution) {
     return 'WHOA! You guessed it'
   }
   var hint = generateHint(guess)
