@@ -5,9 +5,9 @@ function dollas(x, y) {
     let great = x - future;
     console.log(great + "is how much money you'll have sent to you!");
     if (great >= 12000) {
-        console.log("we are amazing")
+        console.log("dolla dolla bills yall!")
     } else {
-        console.log("fuck, that kinda sucks! Oh well. We still be moving yo!!!!!");
+        console.log("crap");
     }
 }
 
