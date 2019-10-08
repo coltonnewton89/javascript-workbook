@@ -29,20 +29,44 @@ function getRandomInt(min, max) {
 }
 
 function generateHint(guess) {
-  var solutionArray = [];
-  var guessArray = [];
+  var guessArray = guess.split('');
+  var solutionArray = solution.split('');
+  var correctLetters = 0;
+  var correctLetterLocations = 0;
+  for (var i = 0; i < solutionArray.length; i++) {
+    if (solutionArray[i] == guessArray[i]) {
+      correctLetterLocations += 1;
+      solutionArray[i] = null;
+    }
+
+
+  }
+  for (var j = 0; j < solutionArray.length; j++) {
+    var targetIndex = guessArray.indexOf(guess);
+    if (targetIndex > -1) {
+      correctLetters += 1;
+      solutionArray[j] = null;
+    }
+    return correctLetterLocations + "-" + correctLetters;
+
+  }
 }
 
 function mastermind(guess) {
   solution = 'abcd';
   board.push(guess);
   if (guess === solution) {
+    console.log("you win");
     return 'WHOA! You guessed it'
   }
   var hint = generateHint(guess)
-  console.log(hint)// Comment this out to generate a random solution
-  // your code here
+  board.push(hint);
+
 }
+
+//console.log(hint)// Comment this out to generate a random solution
+// your code here
+
 
 
 function getPrompt() {
