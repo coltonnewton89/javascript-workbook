@@ -15,6 +15,12 @@ class CrewMember {
     this.job = ijob;
     this.specialSkill = ispecialSkill;
   }
+  //create a function that pushes the crewmemeber into the ship
+  enterShip(theShip) {
+    this.ship = theShip;
+    theShip.crew.push(this)
+
+  }
 }
 //create class of ship and tell it what needs to describe our ship
 class Ship {
@@ -22,14 +28,26 @@ class Ship {
     this.name = isname;
     this.type = istype;
     this.ability = isability;
-    //add an enterShip array, run test, and then create entership function.
+  }
+  /*create function that when ship has 1 or more crewmembers it will return the ability
+  of that ship aka, what the ship needs to do!*/
+  missionStatement() {
+    if (this.crew.length >= 1) {
+      return this.ability
+    } else {
+      return "Can't perform a mission yet.";
+    }
   }
 }
+
+
 
 let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
 let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
 
 let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+
+
 
 //tests
 if (typeof describe === 'function') {
