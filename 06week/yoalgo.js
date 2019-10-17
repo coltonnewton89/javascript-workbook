@@ -1,4 +1,3 @@
-
 var sortedArray = [
     "a",
     "ability",
@@ -1017,28 +1016,10 @@ function find(haystack, needle) {
 // implement a function that will
 // execute a binaray search on the array 
 // to find the needle
-
-//aka quicksort!
-
 function betterFind(haystack, needle) {
-    let index = Math.floor(haystack.length / 2)
-    if (needle < haystack[index]) {
-        let newArr = haystack.slice(0, index)
-        betterFind(newArr, needle)
-        console.log(needle + " should be less than")
-    } else if (needle > haystack[index]) {
-        let newArr = haystack.slice(0, index)
-        betterFind(newArr, needle)
-        console.log(needle + " should be greater than");
-
-    } else if (needle == haystack[index]) {
-        let newArr = haystack[index].length - 1;
-        console.log(newArr);
-    } return haystack.indexOf(needle);
-
+    // your code here
 }
 
 
 // call your method
-//console.log(find(sortedArray, "ahead"));
-console.log(betterFind(sortedArray, "rain"));
+console.log(find(sortedArray, "ahead"));
