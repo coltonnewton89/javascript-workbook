@@ -1032,12 +1032,6 @@ function betterFind(haystack, needle) {
 }
 
 
-
-
-
-
-
-
 // call your method
 console.log(find(sortedArray, "ahead"));
 console.log(betterFind(sortedArray, "ahead"));
