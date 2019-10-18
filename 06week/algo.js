@@ -1034,11 +1034,14 @@ function betterFind(haystack, needle) {
     } else if (needle == haystack[index]) {
         let newArr = haystack[index].length - 1;
         console.log(newArr);
-    } return haystack.indexOf(needle);
+    }
+
+    //return haystack.indexOf(needle);
 
 }
 
 
+
 // call your method
 //console.log(find(sortedArray, "ahead"));
-console.log(betterFind(sortedArray, "rain"));
+console.log(betterFind(sortedArray, "accept"));
