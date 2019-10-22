@@ -56,10 +56,13 @@ const redTeam = []
 
 class player {
     constructor(id, name, age, skillSet, placeBorn) {
-        this.id = id;
-        this.name = name;
+        this.id = id,
+            this.name = name,
+            this.age = age,
+            this.skillSet = skillSet,
+            this.placeBorn = placeBorn
 
-        let jack = new player(8, 'crap')
+
     }
 
 }
@@ -73,7 +76,7 @@ class redTeammate {
 const listPeopleChoices = () => {
     const listElement = document.getElementById('people')
     arrOfPeople.map(person => {
-        const li = document.createElement("li")
+        var li = document.createElement("li")
         const button = document.createElement("button")
         button.innerHTML = "Make Player"
         button.addEventListener('click', function () { makePlayer(person.id) })
@@ -82,30 +85,42 @@ const listPeopleChoices = () => {
         listElement.append(li)
     })
 }
-//create a higher order function that "removes" player from "list of people"
-//and places them in "dodgeball players"
-/*****problemos - we have it to where it moves the people and creates the actual text
-issue is all players are moving instead of individual and red player button is not button
-instead redplayer is being texted */
-const makePlayer = (id) => {
-    const dodgeBallPlayer = document.getElementById('players')
+/*Problem ************
+it's automatically chosing the first index and we want it to 
+ move each index and also the other button.
+ WHY*******
+ because blue button is screwed up
+ Solution********
+ we want it to show both buttons with selected name
+ */
+const makePlayer = id => {
+    const dodgeBallPlayer = document.getElementById("players");
     arrOfPeople.map(thePlayer => {
-        const li = document.createElement("li")
-        const redButton = document.createElement("button")
-        redButton.innerHTML = "Red Team"
-        redButton.addEventListener('clicked', function () { chosenOne(thePlayer.id) })
-        li.appendChild(redButton)
-        dodgeBallPlayer.append(li)
-
-        const blueButton = document.createElement("button")
-        blueButton.innerHTML = "Blue Team"
-        blueButton.addEventListener('clicked', function () { chosenOne(thePlayer.id) })
-        li.appendChild(blueButton)
-        li.appendChild(document.createTextNode(thePlayer.name + " - " + thePlayer.skillSet))
-        dodgeBallPlayer.append(li)
-    })
-    console.log(`li ${id} was clicked!`)
-}
+        const li = document.createElement("li");
+        const redButton = document.createElement("button");
+        redButton.innerHTML = "Red Team";
+        redButton.addEventListener("clicked", function () {
+            chosenOne(thePlayer.id);
+        });
+        li.appendChild(redButton);
+        li.appendChild(
+            document.createTextNode(thePlayer.name + " - " + thePlayer.skillSet)
+        );
+        dodgeBallPlayer.append(li);
+        //this is blue button
+        const blueButton = document.createElement("button");
+        blueButton.innerHTML = "Blue Team";
+        blueButton.addEventListener('clicked', function () {
+            chosenOne(thePlayer.id);
+        });
+        li.appendChild(buleButton);
+        li.appendChild(
+            document.createTextNode(thePlayer.name + " - " + thePlayer.skillSet)
+        );
+        dodgeBallPlayer.append(li);
+    });
+    console.log(`li ${id} was clicked!`);
+};
 
 
 /* step one- need to make people move from "list of people"
