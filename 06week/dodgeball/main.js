@@ -135,6 +135,7 @@ const arrOfPeople = [
     });
   };
   
+  
   const makePlayer = id => {
     const players = document.getElementById("players");
     const findPlayer = arrOfPeople.find((entry) => {
@@ -164,21 +165,85 @@ const arrOfPeople = [
     li.appendChild(document.createTextNode(newPlayer.name + " - "));
   
     const blueButton = document.createElement("button");
+    blueButton.innerHTML = "Blue Team"
     blueButton.addEventListener("click", function(){
-      blueButton.innerHTML = "Blue Team"
       makeBluePlayer(newPlayer.id);
       players.removeChild(li);
     });
     li.appendChild(blueButton);
     const redButton = document.createElement('button');
+    redButton.innerHTML = "Red Team"
     redButton.addEventListener("click", function(){
-      redButton.innerHTML = "Red Team"
       makeRedPlayer(newPlayer.id);
       players.removeChild(li);
     });
     li.appendChild(redButton);
     players.append(li)
+
   }
+
+  const makeBluePlayer = id => {
+    const bluePlayer = document.getElementById("blue");
+    const selectBlue = listOfPlayers.find(function(pick){
+        return pick.id == id;
+    })
+    const blueIndex = listOfPlayers.indexOf(selectBlue)
+    const newBlue = new Teammate(
+        selectBlue.id,
+        selectBlue.name, 
+        selectBlue.age,
+        selectBlue.skillSet,
+        selectBlue.placeBorn,
+        true,
+        true,
+        true,
+        true,
+        45,
+        "blue baracudas",
+        "blue"
+
+    );
+    blueTeam.push(newBlue);
+    listOfPlayers.splice(blueIndex, 1);
+
+    const li = document.createElement("li");
+    li.appendChild(
+        document.createTextNode(newBlue.name + "- Mascot = " + newBlue.mascot + " and team color is " + newBlue.color)
+    );
+    bluePlayer.append(li);
+  }
+
+  const makeRedPlayer = id => {
+    const redPlayer = document.getElementById("red");
+    const selectRed = listOfPlayers.find(function(pick){
+        return pick.id == id;
+    })
+    const redIndex = listOfPlayers.indexOf(selectRed)
+    const newRed = new Teammate(
+        selectRed.id,
+        selectRed.name, 
+        selectRed.age,
+        selectRed.skillSet,
+        selectRed.placeBorn,
+        true,
+        true,
+        true,
+        true,
+        45,
+        "Red Jaguars",
+        "Red"
+
+    );
+    redTeam.push(newRed);
+    listOfPlayers.splice(redIndex, 1);
+
+    const li = document.createElement("li");
+    li.appendChild(
+        document.createTextNode(newRed.name + "- Mascot = " + newRed.mascot + " and team color is " + newRed.color)
+    );
+    redPlayer.append(li);
+  }
+
   
   
   //create a higher order function that "removes" player from "list of people"
@@ -241,3 +306,4 @@ const arrOfPeople = [
   we can also math.random to choose teams for us
   
   we can also create an "undo button*/
+  
