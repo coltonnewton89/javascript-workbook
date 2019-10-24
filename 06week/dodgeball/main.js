@@ -1,3 +1,4 @@
+//create an array of people to draw from
 const arrOfPeople = [
     {
       id: 2,
@@ -117,35 +118,47 @@ const arrOfPeople = [
     }
   }
   
-  
   const listPeopleChoices = () => {
+    //calling out the "people" UL cause we're about to manipulate it!
     const listElement = document.getElementById("people");
+    //and we gonna jack the people from "arrOfPeople!" and start 'person'
     arrOfPeople.map(person => {
+      //create list item in UL
       const li = document.createElement("li");
+      //create button to "makePlayer" adding text and an event listener as well.
       const button = document.createElement("button");
       button.innerHTML = "Make Player";
       button.addEventListener("click", function() {
         makePlayer(person.id);
       });
+      //append the set items into the DOM
       li.appendChild(button);
       li.appendChild(
         document.createTextNode(person.name + " - " + person.skillSet)
       );
+      //append set item into UL
       listElement.append(li);
     });
   };
   
-  
+  //lets code makePlayer!
   const makePlayer = id => {
+    //calling UL "players" from DOM
     const players = document.getElementById("players");
+    //make "findplayer" tangible of selection but we'll call it entry.
     const findPlayer = arrOfPeople.find((entry) => {
+      //and we'll call entry to equal 'class player.id'
       return entry.id == id
     });
     console.log(findPlayer);
+    //create object called playerIndex and make it = arrOfPeople.indexOf what ever findPlayer is.
     const playerIndex = arrOfPeople.indexOf(findPlayer);
     console.log(
-      `this is the player indez ${playerIndex}. Push this to the "Player list". Remove this fro the "list of Players`
+      `player index ${playerIndex}. Push to "Player list". Remove from "list of Players`
     );
+    //create object newPlayer and let it be a new player with constructor attributes of
+    //findPlayer. whatever we want and let the other constructor attributes be true and we'll
+    //add 4 years of experience *given to us by 'Player'*  
     const newPlayer = new Player(
       findPlayer.id, 
       findPlayer.name,
@@ -158,9 +171,12 @@ const arrOfPeople = [
       true, 
       4
     );
+    //yep, so now we'll push our 'newPlayer' to listOfPlayers
     listOfPlayers.push(newPlayer);
+    //now lets steal from arrOfPeople and lets place that stollen thing into 
+    //playerIndex
     arrOfPeople.splice(playerIndex, 1);
-    //this will add people to the list of players DOM
+    //this will add people to the list item of players to DOM with name and -
     const li = document.createElement("li");
     li.appendChild(document.createTextNode(newPlayer.name + " - "));
   
@@ -178,9 +194,9 @@ const arrOfPeople = [
       players.removeChild(li);
     });
     li.appendChild(redButton);
-    players.append(li)
+      players.append(li);}
 
-  }
+  
 
   const makeBluePlayer = id => {
     const bluePlayer = document.getElementById("blue");
