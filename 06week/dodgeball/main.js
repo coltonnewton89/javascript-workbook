@@ -88,6 +88,7 @@ const arrOfPeople = [
       player.blueTeam.push(this);
     }
   }
+  //possibly extend class
   class Teammate {
     constructor(
       id, 

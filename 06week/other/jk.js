@@ -30,3 +30,7 @@ standard_input.on("data", function (guess) {
     }
     console.log(dashes)
 });
+
+
+/* Try to figure out a way to use match() method in this program. This
+will probably use less code. All you'll have to do is match('guess') */
