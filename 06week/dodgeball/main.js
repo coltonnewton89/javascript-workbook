@@ -61,23 +61,13 @@ const arrOfPeople = [
       name,
       age,
       skillSet, 
-      placeBorn,
-      canThrowBall,
-      canDodgeBall,
-      hasPaid,
-      isHealthy,
-      yearsExperience
+      placeBorn
     ) {
       this.id = id;
       this.name = name;
       this.age = age;
       this.skillSet = skillSet;
       this.placeBorn = placeBorn;
-      this.canThrowBall = canThrowBall;
-      this.canDodgeBall = canDodgeBall;
-      this.hasPaid = hasPaid;
-      this.isHealthy = isHealthy, 
-      this.yearsExperience = yearsExperience;
     }
     joinRedTeam(redTeam) {
       this.redTeam = redTeam;
@@ -88,8 +78,7 @@ const arrOfPeople = [
       player.blueTeam.push(this);
     }
   }
-  //possibly extend class
-  class Teammate {
+  class Teammate  extends Player{
     constructor(
       id, 
       name,
@@ -104,11 +93,13 @@ const arrOfPeople = [
       mascot,
       teamColor
     ) {
-      this.id = id;
-      this.name = name;
-      this.age = age;
-      this.skillSet = skillSet;
-      this.placeBorn = placeBorn;
+    super(
+        id,
+        name,
+        age,
+        skillSet,
+        placeBorn
+    )
       this.canThrowBall = canThrowBall;
       this.canDodgeBall = canDodgeBall;
       this.hasPaid = hasPaid;
@@ -260,6 +251,30 @@ const arrOfPeople = [
     );
     redPlayer.append(li);
   }
+
+  //tests
+let assert = require('assert');
+
+if (typeof describe === 'function'){
+  describe('Player', function(){
+    it('should be able to become a red Player', function(){
+      if (listOfPlayers.id == 2 && redTeam.id == 2) {
+        return true;
+      }
+    });
+  });
+  it('should be able to become a player', function(){
+    if (arrOfPeople.id == 2 && listOfPlayer.id == 2) {
+      return true;
+    }
+  });
+  it('should be able to become a blue Player', function(){
+    if (listOfPlayers.id == 2 && blueTeam.id == 2) {
+      return true;
+    }
+  });
+  
+}
 
   
   
