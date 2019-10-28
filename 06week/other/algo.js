@@ -932,7 +932,7 @@ var sortedArray = [
     "us",
     "use",
     "usually",
-    "value",
+    "needle",
     "various",
     "very",
     "victim",
@@ -1014,13 +1014,42 @@ function find(haystack, needle) {
     return -1;
 }
 
-// implement a function that will
-// execute a binaray search on the array 
-// to find the needle
+/* the fallowing math can be found at
+https://en.wikipedia.org/wiki/Binary_search_algorithm
+this will also help you figure out some additional commenting in the code.
+*/
 
-//aka quicksort!
+//create a function and call array and "target or needle index"
+function binarySearch(haystack, needle) {
 
-function betterFind(haystack, needle) {
+    //set A to 0 and times A by the length of haystack. let R = n-1 and
+    //then divide it by two if the middle is not equivalent to needle
+    // and ay is with in that
+    var ay = 0,
+        stopIt = haystack.length - 1,
+        middle = Math.floor((stopIt + ay) / 2);
+
+    while (haystack[middle] != needle && ay < stopIt) {
+
+        //keep adjusting
+        if (needle < haystack[middle]) {
+            stopIt = middle - 1;
+        } else if (needle > haystack[middle]) {
+            ay = middle + 1;
+        }
+
+        //if you do split it by two you have to change thy middle
+        middle = Math.floor((stopIt + ay) / 2);
+    }
+
+    //make sure it's the right word
+    return (haystack[middle] != needle) ? -1 : middle;
+}
+
+console.log(binarySearch(sortedArray, "of"));
+
+
+/*function betterFind(haystack, needle) {
     let index = Math.floor(haystack.length / 2)
     if (needle < haystack[index]) {
         let newArr = haystack.slice(0, index)
@@ -1043,5 +1072,5 @@ function betterFind(haystack, needle) {
 
 
 // call your method
-//console.log(find(sortedArray, "ahead"));
-console.log(betterFind(sortedArray, "accept"));
+console.log(find(sortedArray, "ahead"));
+console.log(binarySearch(sortedArray, "of"));*/
