@@ -118,7 +118,7 @@ const arrOfPeople = [
       //create list item in UL
       const li = document.createElement("li");
       //create button to "makePlayer" adding text and an event listener as well.
-      const button = document.createElement("button");
+      var button = document.createElement("button");
       button.innerHTML = "Make Player";
       button.addEventListener("click", function() {
         makePlayer(person.id);
@@ -173,6 +173,8 @@ const arrOfPeople = [
     li.appendChild(document.createTextNode(newPlayer.name + " - "));
   
     const blueButton = document.createElement("button");
+    blueButton.style.color = "white";
+    blueButton.style.backgroundColor = "blue";
     blueButton.innerHTML = "Blue Team"
     blueButton.addEventListener("click", function(){
       makeBluePlayer(newPlayer.id);
@@ -180,6 +182,8 @@ const arrOfPeople = [
     });
     li.appendChild(blueButton);
     const redButton = document.createElement('button');
+    redButton.style.color = "white";
+    redButton.style.backgroundColor = "red";
     redButton.innerHTML = "Red Team"
     redButton.addEventListener("click", function(){
       makeRedPlayer(newPlayer.id);
