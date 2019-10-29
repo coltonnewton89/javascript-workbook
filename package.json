@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AustinCodingAcademy/javascript-workbook#readme",
   "dependencies": {
+    "brewerydb-node": "0.0.1",
     "eslint": "^3.19.0",
     "functional-javascript-workshop": "^1.0.6",
     "htmllint-cli": "github:kevincolten/htmllint-cli",
